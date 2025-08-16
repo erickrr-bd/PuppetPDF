@@ -13,7 +13,26 @@ Built for developers, sysadmins, and automation workflows that demand precision,
 
 Clone the repo and install dependencies:
 
-```bash
+```
 git clone https://github.com/erickrr-bd/PuppetPDF.git
 cd PuppetPDF
 npm install
+```
+## Requirements
+- Node.js ≥ 18
+- Internet access (if your HTML loads remote resources)
+- - Chromium (bundled with Puppeteer)
+
+## Usage
+```
+usage: node PuppetPDF.js [--input] [--output]
+
+optional arguments:
+  --input       Path to the HTML file
+  --output      Path to save the generated PDF
+```
+
+## Example
+```
+node PuppetPDF.js --input ./nmap-report.html --output ./nmap-report.pdf
+```

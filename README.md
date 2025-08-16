@@ -34,6 +34,16 @@ optional arguments:
 
 ## Example
 ```
-node PuppetPDF.js --input ./nmap-report.html --output ./nmap-report.pdf
+node PuppetPDF.js --input 172.24.40.4.html --output 172.24.40.4.pdf
 ```
+An HTML document is displayed with defined colors and styles.
+
 ![Preview](./images/img1.png)
+
+Using the PuppetPDF tool, you indicate that the HTML file will be converted to PDF.
+
+![Preview](./images/img2.png)
+
+It is observed that the PDF file was generated correctly, maintaining the styles and colors defined in the HTML.
+
+![Preview](./images/img3.png)

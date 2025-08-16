@@ -21,7 +21,7 @@ npm install
 ## Requirements
 - Node.js ≥ 18
 - Internet access (if your HTML loads remote resources)
-- - Chromium (bundled with Puppeteer)
+- Chromium (bundled with Puppeteer)
 
 ## Usage
 ```

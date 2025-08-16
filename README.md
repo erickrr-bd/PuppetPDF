@@ -42,7 +42,7 @@ An HTML document is displayed with defined colors and styles.
 
 Using the PuppetPDF tool, you indicate that the HTML file will be converted to PDF.
 
-![Preview](./images/img2.png)
+![Preview](./images/img4.png)
 
 It's observed that the PDF file was generated correctly, maintaining the styles and colors defined in the HTML.
 

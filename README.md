@@ -44,6 +44,6 @@ Using the PuppetPDF tool, you indicate that the HTML file will be converted to P
 
 ![Preview](./images/img2.png)
 
-It is observed that the PDF file was generated correctly, maintaining the styles and colors defined in the HTML.
+It's observed that the PDF file was generated correctly, maintaining the styles and colors defined in the HTML.
 
 ![Preview](./images/img3.png)

@@ -36,3 +36,4 @@ optional arguments:
 ```
 node PuppetPDF.js --input ./nmap-report.html --output ./nmap-report.pdf
 ```
+![Preview](./images/img1.png)

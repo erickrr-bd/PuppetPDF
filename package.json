@@ -1,14 +1,17 @@
 {
-  "name": "proyecto-pdf",
+  "name": "PuppetPDF",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "CLI tool to convert HTML to PDF using Puppeteer with full print fidelity",
+  "main": "PuppetPDF.js",
+  "bin": {
+    "puppetpdf": "./PuppetPDF.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["pdf", "html", "puppeteer", "cli", "reporting", "automation"],
+  "author": "Erick Rodriguez",
+  "license": "GPL-3.0",
   "dependencies": {
     "puppeteer": "^24.16.2",
     "yargs": "^17.7.2"

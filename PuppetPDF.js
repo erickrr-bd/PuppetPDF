@@ -1,9 +1,12 @@
-`
+#!/usr/bin/env node
+
+/**
 Author: Erick Roberto Rodriguez Rodriguez
 Email: erodriguez@tekium.mx, erickrr.tbd93@gmail.com
 GitHub: https://github.com/erickrr-bd/PuppetPDF
 PuppetPDF v1.0 - August 2025
-`
+*/
+
 const fs = require("fs");
 const path = require("path");
 const yargs = require('yargs');

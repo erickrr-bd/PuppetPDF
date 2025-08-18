@@ -7,6 +7,7 @@ Built for developers, sysadmins, and automation workflows that demand precision,
 - Preserves colors, layout, and print styles.
 - Optimized for enterprise reports and multi-table documents.
 - CLI-ready with argument parsing.
+- Option to automatically open the generated PDF.
 - Works headlessly with Puppeteer and Chromium.
 
 ## Installation
@@ -25,25 +26,33 @@ npm install
 
 ## Usage
 ```
-usage: node PuppetPDF.js [--input] [--output]
+usage: node PuppetPDF.js [--input] [--output] [--size] [--open]
 
 optional arguments:
   --input       Path to the HTML file
   --output      Path to save the generated PDF
+  --size        PDF size (A4. Letter, Legal)
+  --open        Automatically open the generated PDF (optional)
+```
+
+It's also possible to obtain the list of arguments using the help option.
+
+```
+usage: node PuppetPDF.js [--help]
 ```
 
 ## Example
 ```
-node PuppetPDF.js --input 172.24.40.4.html --output 172.24.40.4.pdf
+node PuppetPDF.js --input 172.24.40.4.html --output 172.24.40.4.pdf --size A4
 ```
-An HTML document is displayed with defined colors and styles.
+HTML document with styles, colors and images.
 
 ![Preview](./images/img1.png)
 
-Using the PuppetPDF tool, you indicate that the HTML file will be converted to PDF.
+Using the PuppetPDF tool, the HTML document is converted into PDF.
 
-![Preview](./images/img4.png)
+![Preview](./images/img2.png)
 
-It's observed that the PDF file was generated correctly, maintaining the styles and colors defined in the HTML.
+The PDF document is generated, maintaining the styles, colors and images of the original HTML document.
 
 ![Preview](./images/img3.png)

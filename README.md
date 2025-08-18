@@ -57,7 +57,7 @@ npm install -g pkg
 pkg . --targets node18-linux-x64 --output dist/puppetpdf
 ```
 
-**NOTE: You can change  to match your Node.js version, and  to  if needed.
+**NOTE:** You can change  to match your Node.js version, and  to  if needed.
 
 3.- Run the binary
 

@@ -19,6 +19,7 @@ git clone https://github.com/erickrr-bd/PuppetPDF.git
 cd PuppetPDF
 npm install
 ```
+
 ## Requirements
 - Node.js ≥ 18
 - Internet access (if your HTML loads remote resources)
@@ -39,6 +40,36 @@ It's also possible to obtain the list of arguments using the help option.
 
 ```
 usage: node PuppetPDF.js [--help]
+```
+
+## Generate executable file
+You can package PuppetPDF into a standalone executable for Linux, Windows, or macOS using. This allows you to run the CLI without needing Node.js installed globally.
+
+1.- Install pkg
+
+```
+npm install -g pkg
+```
+
+2.- Build the binary
+
+```
+pkg . --targets node18-linux-x64 --output dist/puppetpdf
+```
+
+**NOTE: You can change  to match your Node.js version, and  to  if needed.
+
+3.- Run the binary
+
+```
+chmod +x dist/puppetpdf
+./dist/puppetpdf --input file.html --output file.pdf --size A4
+```
+
+To install globally:
+
+```
+sudo mv dist/puppetpdf /usr/local/bin/puppetpdf
 ```
 
 ## Example

@@ -7,8 +7,9 @@ Built for developers, sysadmins, and automation workflows that demand precision,
 - Preserves colors, layout, and print styles.
 - Optimized for enterprise reports and multi-table documents.
 - CLI-ready with argument parsing.
-- Option to automatically open the generated PDF.
+- Optional `--open` flag to auto-launch the generated PDF.
 - Works headlessly with Puppeteer and Chromium.
+- Packaged as a standalone binary for Linux (Kali, Rocky Linux, Debian-based).
 
 ## Installation
 

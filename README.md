@@ -7,8 +7,9 @@ Built for developers, sysadmins, and automation workflows that demand precision,
 - Preserves colors, layout, and print styles.
 - Optimized for enterprise reports and multi-table documents.
 - CLI-ready with argument parsing.
-- Option to automatically open the generated PDF.
+- Optional `--open` flag to auto-launch the generated PDF.
 - Works headlessly with Puppeteer and Chromium.
+- Packaged as a standalone binary for Linux (Kali, Rocky Linux, Debian-based).
 
 ## Installation
 
@@ -57,7 +58,7 @@ npm install -g pkg
 pkg . --targets node18-linux-x64 --output dist/puppetpdf
 ```
 
-**NOTE: You can change  to match your Node.js version, and  to  if needed.
+**NOTE:** You can change  to match your Node.js version, and x64 to arm64 if needed.
 
 3.- Run the binary
 

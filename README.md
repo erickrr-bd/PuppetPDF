@@ -22,6 +22,8 @@ cd PuppetPDF
 npm install
 ```
 
+### Chromium Installation (Required for offline mode)
+
 In order to use offline mode, Chromium must be installed on the system. If this isn't installed, the program will not be able to work unless offline mode is omitted (this requires an Internet connection).
 
 To install Chromium:

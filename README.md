@@ -8,6 +8,7 @@ Built for developers, sysadmins, and automation workflows that demand precision,
 - Optimized for enterprise reports and multi-table documents.
 - CLI-ready with argument parsing.
 - Optional `--open` flag to auto-launch the generated PDF.
+- Optional `--offline` flag to forces the CLI to use a system-installed Chromium binary instead of attempting to download one. This is ideal for air-gapped environments, hardened systems, or when internet access is restricted.
 - Works headlessly with Puppeteer and Chromium.
 - Packaged as a standalone binary for Linux (Kali, Rocky Linux, Debian-based).
 
@@ -21,20 +22,36 @@ cd PuppetPDF
 npm install
 ```
 
+In order to use offline mode, Chromium must be installed on the system. If this isn't installed, the program will not be able to work unless offline mode is omitted (this requires an Internet connection).
+
+To install Chromium:
+
+**On Rocky Linux 8**
+```
+sudo dnf install -y chromium
+```
+
+You can verify installation with:
+
+```
+which chromium || which chromium-browser
+```
+
 ## Requirements
 - Node.js ≥ 18
-- Internet access (if your HTML loads remote resources)
+- Internet access (if your HTML loads remote resources or online mode)
 - Chromium (bundled with Puppeteer)
 
 ## Usage
 ```
-usage: node PuppetPDF.js [--input] [--output] [--size] [--open]
+usage: node PuppetPDF.js [--input] [--output] [--size] [--open] [--offline]
 
 optional arguments:
   --input       Path to the HTML file
   --output      Path to save the generated PDF
   --size        PDF size (A4. Letter, Legal)
   --open        Automatically open the generated PDF (optional)
+  --offline     Offline mode (optional) (Chromium must be installed on the system)
 ```
 
 It's also possible to obtain the list of arguments using the help option.

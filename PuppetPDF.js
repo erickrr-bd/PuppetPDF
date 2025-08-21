@@ -6,37 +6,45 @@ Email: erodriguez@tekium.mx, erickrr.tbd93@gmail.com
 GitHub: https://github.com/erickrr-bd/PuppetPDF
 PuppetPDF v1.0 - August 2025
 */
-
 const fs = require("fs");
 const path = require("path");
-const yargs = require('yargs');
-const puppeteer = require("puppeteer");
-const { exec } = require('child_process');
-const { execSync } = require('child_process');
+const yargs = require("yargs");
+const { exec } = require("child_process");
+const { execSync } = require("child_process");
+const { define_chromium_path } = require('./utils/chromium');
 
 const argv = yargs
 .option("input", { alias: 'i', describe : "Path to the HTML file", type: "string", demandOption: true })
 .option("output", { alias: 'o', describe : "Path to save the generated PDF", type: "string", demandOption: true })
 .option("size", { alias: 's', describe : "PDF size", choices : ["A4", "Letter", "Legal"], type: "string", demandOption: true })
 .option("open", { describe : "Automatically open the generated PDF", type: "boolean", default : false })
+.option("offline", { describe : "Offline mode", type: "boolean", default : false })
 .argv;
 
 /**
- * Validates whether a PDF viewer is available on the system.
+ * Checks whether the current operating system has a default PDF viewer command available.
  *
- * @returns {boolean} - Whether or not there is a PDF viewer.
- * 
- * @throws {Error} If there is an error when validating whether a PDF viewer is available.
+ * This function detects the platform (`win32`, `darwin`, or `linux`) and verifies
+ * whether the corresponding system command for opening files is present:
+ *
+ * - On Windows: checks for the `start` command using `where`
+ * - On macOS: checks for the `open` command using `which`
+ * - On Linux: checks for `xdg-open` using `which`
+ *
+ * If the command is found, the function returns `true`, indicating that a PDF viewer
+ * can likely be launched from the CLI. If the command is missing or the platform is unsupported,
+ * it returns `false`.
+ *
+ * @returns {boolean} `true` if a PDF viewer command is available, `false` otherwise
  */
 function validate_pdf_visor(){
   const platform = process.platform;
-
   try{
     if(platform == "win32"){
       execSync("where start", { stdio : "ignore" });
     }
     else if(platform == "darwin"){
-     execSync("which open", { stdio : "ignore" });
+      execSync("which open", { stdio : "ignore" });
     }
     else if(platform == "linux"){
       execSync("which xdg-open", { stdio : "ignore" });
@@ -45,7 +53,7 @@ function validate_pdf_visor(){
       return false;
     }
     return true;
-  } catch{
+  }catch{
     return false;
   }
 }
@@ -62,6 +70,8 @@ console.log("By Erick Rodriguez\n");
 console.log(`[*] Input: ${argv.input}`);
 console.log(`[*] Output: ${argv.output}`);
 console.log(`[*] Size: ${argv.size}`);
+console.log(`[*] Open PDF: ${argv.open}`);
+console.log(`[*] Offline mode: ${argv.offline}`);
 
 (async () => {
   const ext_input = path.extname(argv.input).toLowerCase();
@@ -74,18 +84,22 @@ console.log(`[*] Size: ${argv.size}`);
     console.error("\n[*] Output file must be a PDF file");
   }
   else{
+    const { puppeteer, executablePath } = await define_chromium_path({ offline_mode: argv.offline });
     const browser = await puppeteer.launch({
+      executablePath,
+      headless: true,
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
     const page = await browser.newPage();
     const html = fs.readFileSync(argv.input, "utf8");
     await page.setContent(html, { waitUntil: "networkidle0" });
+    await page.setDefaultNavigationTimeout(0);
     try{
       await page.pdf({
         path: argv.output,
         format: argv.size,
         printBackground: true,
-        margin: {  top: "20mm", bottom: "20mm" }
+        margin: {  top: "0mm", bottom: "0mm" }
       });
       await browser.close();
       console.log(`\n[*] Created PDF: ${argv.output}`);
